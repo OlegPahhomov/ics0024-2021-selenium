@@ -54,7 +54,7 @@ public class TheInternetAppTests {
         FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
 
         homePage.clickFormAuthenticationLink();
-        formAuthenticationPage.enterUsername("numblugameboytetris");
+        formAuthenticationPage.enterUsername("nublugameboytetris");
         formAuthenticationPage.enterPassword("oksana");
         formAuthenticationPage.clickSubmit();
 
