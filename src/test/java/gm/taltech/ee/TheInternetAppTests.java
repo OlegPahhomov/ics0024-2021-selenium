@@ -1,5 +1,6 @@
 package gm.taltech.ee;
 
+import gm.taltech.ee.page_object.FormAuthenticationPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -56,6 +57,23 @@ public class TheInternetAppTests {
         // should see success notification
         WebElement webElement = driver.findElement(cssSelector(".flash.success"));
         assertThat(webElement, notNullValue());
+    }
+
+    @Test
+    public void should_login_to_secure_area_with_invalid_credentials(){
+        // open Form Authentication
+        driver.findElement(By.linkText("Form Authentication")).click();
+        FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
+        // enter valid username
+        formAuthenticationPage.enterUsername("tomsmith");
+        // enter valid password
+        formAuthenticationPage.enterPassword("SuperSecretPassword!");
+        // click Login button
+        formAuthenticationPage.clickSubmit();
+        // should see success notification
+        boolean isSuccessNotificationDislayed = formAuthenticationPage.isSuccessNotificationDisplayed();
+
+        assertThat(isSuccessNotificationDislayed, is(true));
     }
 
     @Test
