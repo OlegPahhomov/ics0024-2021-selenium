@@ -35,6 +35,7 @@ public class FormAuthenticationPage {
             driver.findElement(successNotification);
             return true;
         } catch (ElementNotVisibleException e) {
+            // log exception
             return false;
         }
     }
@@ -44,6 +45,7 @@ public class FormAuthenticationPage {
             driver.findElement(errorNotification);
             return true;
         } catch (ElementNotVisibleException e) {
+            // log exception
             return false;
         }
     }

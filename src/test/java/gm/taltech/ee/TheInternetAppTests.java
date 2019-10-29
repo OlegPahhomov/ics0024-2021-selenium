@@ -1,9 +1,6 @@
 package gm.taltech.ee;
 
-import gm.taltech.ee.page_object.DropdownPage;
-import gm.taltech.ee.page_object.DynamicLoadingPage;
-import gm.taltech.ee.page_object.FormAuthenticationPage;
-import gm.taltech.ee.page_object.HomePage;
+import gm.taltech.ee.page_object.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -27,6 +24,7 @@ public class TheInternetAppTests {
 
     @BeforeMethod
     public void open_driver() {
+
         driver.get("https://the-internet.herokuapp.com/");
     }
 
@@ -84,6 +82,17 @@ public class TheInternetAppTests {
         dropdownPage.selectOptionOne();
 
         assertThat(dropdownPage.isOptionOneSelected(), is(true));
+    }
+
+    @Test
+    public void should_see_view_profile_link_on_hover() {
+        HomePage homePage = new HomePage(driver);
+        HoversPage hoversPage = new HoversPage(driver);
+
+        homePage.clickHoverLink();
+        hoversPage.hoverOverFirstProfile();
+
+        assertThat(hoversPage.isViewProfileLinkVisible(), is(true));
     }
 
     @AfterClass
