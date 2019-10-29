@@ -10,6 +10,7 @@ public class FormAuthenticationPage {
     private By passwordField = By.id("password");
     private By submitButton = By.xpath("//button[@type='submit']");
     private By successNotification = By.cssSelector(".flash.success");
+    private By errorNotification = By.cssSelector(".flash.error");
 
     private WebDriver driver;
 
@@ -32,6 +33,15 @@ public class FormAuthenticationPage {
     public boolean isSuccessNotificationDisplayed() {
         try {
             driver.findElement(successNotification);
+            return true;
+        } catch (ElementNotVisibleException e) {
+            return false;
+        }
+    }
+
+    public boolean isErrorNotificationDisplayed() {
+        try {
+            driver.findElement(errorNotification);
             return true;
         } catch (ElementNotVisibleException e) {
             return false;

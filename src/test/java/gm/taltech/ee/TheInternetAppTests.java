@@ -1,101 +1,82 @@
 package gm.taltech.ee;
 
+import gm.taltech.ee.page_object.DynamicLoadingPage;
 import gm.taltech.ee.page_object.FormAuthenticationPage;
+import gm.taltech.ee.page_object.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.openqa.selenium.By.cssSelector;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class TheInternetAppTests {
 
     private WebDriver driver;
 
     @BeforeClass
-    public void set_up_driver(){
+    public void set_up_driver() {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
     }
 
     @BeforeMethod
-    public void open_driver(){
+    public void open_driver() {
         driver.get("https://the-internet.herokuapp.com/");
     }
 
     @Test
-    public void can_go_to_home_page(){
-        String title = driver.findElement(By.tagName("h1")).getText();
+    public void can_go_to_home_page() {
+        HomePage homePage = new HomePage(driver);
 
-        assertThat(title, is("Welcome to the-internet"));
+        assertThat(homePage.isAt(), is(true));
     }
 
     @Test
-    public void should_login_to_secure_area_with_valid_credentials(){
-        // open Form Authentication
-        driver.findElement(By.linkText("Form Authentication")).click();
-        // enter valid username
-        driver.findElement(By.id("username")).sendKeys("tomsmith");
-        // enter valid password
-        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-        // click Login button
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        // should see success notification
-        WebElement webElement = driver.findElement(cssSelector(".flash.success"));
-        assertThat(webElement, notNullValue());
-    }
-
-    @Test
-    public void should_login_to_secure_area_with_invalid_credentials(){
-        // open Form Authentication
-        driver.findElement(By.linkText("Form Authentication")).click();
+    public void should_login_to_secure_area_with_valid_credentials() {
+        HomePage homePage = new HomePage(driver);
         FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
-        // enter valid username
-        formAuthenticationPage.enterUsername("tomsmith");
-        // enter valid password
-        formAuthenticationPage.enterPassword("SuperSecretPassword!");
-        // click Login button
-        formAuthenticationPage.clickSubmit();
-        // should see success notification
-        boolean isSuccessNotificationDislayed = formAuthenticationPage.isSuccessNotificationDisplayed();
 
-        assertThat(isSuccessNotificationDislayed, is(true));
+        homePage.clickFormAuthenticationLink();
+        formAuthenticationPage.enterUsername("tomsmith");
+        formAuthenticationPage.enterPassword("SuperSecretPassword!");
+        formAuthenticationPage.clickSubmit();
+
+        assertThat(formAuthenticationPage.isSuccessNotificationDisplayed(), is(true));
     }
 
     @Test
-    public void should_see_hello_world_after_loading() throws InterruptedException {
-        // got to Dynamic Loading page
-        driver.findElement(By.linkText("Dynamic Loading")).click();
-        // Click Example 1 link
-        driver.findElement(By.linkText("Example 1: Element on page that is hidden")).click();
-        // Click button Start
-        driver.findElement(By.cssSelector("#start > button")).click();
-        // should see Hello World
+    public void should_login_to_secure_area_with_invalid_credentials() {
+        HomePage homePage = new HomePage(driver);
+        FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
 
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 10000);
-        WebElement helloWorldElement = webDriverWait.until(visibilityOfElementLocated(cssSelector("#finish > h4")));
+        homePage.clickFormAuthenticationLink();
+        formAuthenticationPage.enterUsername("numblugameboytetris");
+        formAuthenticationPage.enterPassword("oksana");
+        formAuthenticationPage.clickSubmit();
 
-        String helloWorld = helloWorldElement.getText();
-        assertThat(helloWorld, is("Hello World!"));
+        assertThat(formAuthenticationPage.isErrorNotificationDisplayed(), is(true));
+    }
+
+    @Test
+    public void should_see_hello_world_after_loading() {
+        HomePage homePage = new HomePage(driver);
+        DynamicLoadingPage dynamicLoadingPage = new DynamicLoadingPage(driver);
+
+        homePage.clickDynamicLoadingLink();
+        dynamicLoadingPage.clickExampleOne();
+        dynamicLoadingPage.clickStart();
+
+        assertThat(dynamicLoadingPage.isHelloWorldVisible(), is(true));
     }
 
     @AfterClass
-    public void close_driver(){
-        if(driver != null){
+    public void close_driver() {
+        if (driver != null) {
             driver.close();
         }
     }
