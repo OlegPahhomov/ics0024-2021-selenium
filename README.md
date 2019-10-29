@@ -11,6 +11,5 @@ Web Application under test: https://the-internet.herokuapp.com/
 - Form Authentication
 - Dropdown List
 - Dynamic Loading (Waits)
-- Entry Ad (Dealing with modals)
-- Large & Deep DOM (When developers hate you)
 - Hovers (Content appears on hover)
+- Entry Ad (Dealing with modals)
