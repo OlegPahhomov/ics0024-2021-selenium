@@ -1,10 +1,13 @@
 package gm.taltech.ee;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -16,7 +19,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TheInternetAppTests {
 
-    private WebDriver driver = new ChromeDriver();
+    private WebDriver driver;
+
+    @BeforeClass
+    public void set_up_driver(){
+        WebDriverManager.firefoxdriver().setup();
+        driver = new FirefoxDriver();
+    }
 
     @BeforeMethod
     public void open_driver(){
@@ -43,6 +52,11 @@ public class TheInternetAppTests {
         // should see success notification
         WebElement webElement = driver.findElement(By.cssSelector(".flash.success"));
         assertThat(webElement, notNullValue());
+    }
+
+    @Test
+    public void should_see_hello_world_after_loading(){
+
     }
 
     @AfterClass
