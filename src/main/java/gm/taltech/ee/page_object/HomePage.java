@@ -8,6 +8,7 @@ public class HomePage {
     private By mainTitle = By.tagName("h1");
     private By formAuthenticationLink = By.linkText("Form Authentication");
     private By dynamicLoadingLink = By.linkText("Dynamic Loading");
+    private By dropdownLink = By.linkText("Dropdown");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -23,5 +24,9 @@ public class HomePage {
 
     public void clickDynamicLoadingLink() {
         driver.findElement(dynamicLoadingLink).click();
+    }
+
+    public void clickDropdownLink() {
+        driver.findElement(dropdownLink).click();
     }
 }

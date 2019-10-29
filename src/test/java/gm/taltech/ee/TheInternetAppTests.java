@@ -1,5 +1,6 @@
 package gm.taltech.ee;
 
+import gm.taltech.ee.page_object.DropdownPage;
 import gm.taltech.ee.page_object.DynamicLoadingPage;
 import gm.taltech.ee.page_object.FormAuthenticationPage;
 import gm.taltech.ee.page_object.HomePage;
@@ -72,6 +73,17 @@ public class TheInternetAppTests {
         dynamicLoadingPage.clickStart();
 
         assertThat(dynamicLoadingPage.isHelloWorldVisible(), is(true));
+    }
+
+    @Test
+    public void should_select_option_one() {
+        HomePage homePage = new HomePage(driver);
+        DropdownPage dropdownPage = new DropdownPage(driver);
+
+        homePage.clickDropdownLink();
+        dropdownPage.selectOptionOne();
+
+        assertThat(dropdownPage.isOptionOneSelected(), is(true));
     }
 
     @AfterClass
