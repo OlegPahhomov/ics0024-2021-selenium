@@ -10,6 +10,7 @@ public class HomePage {
     private By dynamicLoadingLink = By.linkText("Dynamic Loading");
     private By dropdownLink = By.linkText("Dropdown");
     private By hoversLink = By.linkText("Hovers");
+    private By dragAndDropLink = By.linkText("Drag and Drop");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -33,5 +34,9 @@ public class HomePage {
 
     public void clickHoverLink() {
         driver.findElement(hoversLink).click();
+    }
+
+    public void clickDragAndDropLink() {
+        driver.findElement(dragAndDropLink).click();
     }
 }
