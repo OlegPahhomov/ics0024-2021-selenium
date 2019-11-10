@@ -18,9 +18,18 @@ public class DragAndDropPage {
     private WebDriver driver;
     private By blockA = By.id("column-a");
     private By blockB = By.id("column-b");
+    private By heading = By.className("example");
+
 
     public DragAndDropPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public void dragAonTopOfHeading() {
+        WebElement blockAElement = driver.findElement(blockA);
+        WebElement headingElement = driver.findElement(heading);
+
+        dragAndDrop(blockAElement, headingElement);
     }
 
     public void dragAonTopOfB() {
@@ -41,7 +50,6 @@ public class DragAndDropPage {
             throw new RuntimeException(e);
         }
     }
-
 
     public boolean isTheFirstElementsHeaderText(String headerText) {
         System.out.println(driver.findElement(blockA).findElement(By.tagName("header")).getText());

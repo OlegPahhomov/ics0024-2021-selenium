@@ -7,10 +7,8 @@ public class HomePage {
     private WebDriver driver;
     private By mainTitle = By.tagName("h1");
     private By formAuthenticationLink = By.linkText("Form Authentication");
-    private By dynamicLoadingLink = By.linkText("Dynamic Loading");
-    private By dropdownLink = By.linkText("Dropdown");
-    private By hoversLink = By.linkText("Hovers");
     private By dragAndDropLink = By.linkText("Drag and Drop");
+    private By multipleWindowsLink = By.linkText("Multiple Windows");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -24,19 +22,11 @@ public class HomePage {
         driver.findElement(formAuthenticationLink).click();
     }
 
-    public void clickDynamicLoadingLink() {
-        driver.findElement(dynamicLoadingLink).click();
-    }
-
-    public void clickDropdownLink() {
-        driver.findElement(dropdownLink).click();
-    }
-
-    public void clickHoverLink() {
-        driver.findElement(hoversLink).click();
-    }
-
     public void clickDragAndDropLink() {
         driver.findElement(dragAndDropLink).click();
+    }
+
+    public void clickMultipleWindowsLink() {
+        driver.findElement(multipleWindowsLink).click();
     }
 }

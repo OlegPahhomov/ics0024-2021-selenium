@@ -9,6 +9,7 @@ public class FormAuthenticationPage {
     private By usernameField = By.id("username");
     private By passwordField = By.id("password");
     private By submitButton = By.xpath("//button[@type='submit']");
+    private By logoutButton = By.linkText("Logout");
     private By successNotification = By.cssSelector(".flash.success");
     private By errorNotification = By.cssSelector(".flash.error");
 
@@ -30,6 +31,10 @@ public class FormAuthenticationPage {
         driver.findElement(submitButton).click();
     }
 
+    public void clickLogout() {
+        driver.findElement(logoutButton).click();
+    }
+
     public boolean isSuccessNotificationDisplayed() {
         try {
             driver.findElement(successNotification);
@@ -40,10 +45,27 @@ public class FormAuthenticationPage {
         }
     }
 
-    public boolean isErrorNotificationDisplayed() {
+    public boolean isUsernameInvalidMessageDisplayed() {
         try {
-            driver.findElement(errorNotification);
-            return true;
+            return driver.findElement(errorNotification).getText().contains("Your username is invalid!");
+        } catch (ElementNotVisibleException e) {
+            // log exception
+            return false;
+        }
+    }
+
+    public boolean isPasswordInvalidMessageDisplayed() {
+        try {
+            return driver.findElement(errorNotification).getText().contains("Your password is invalid!");
+        } catch (ElementNotVisibleException e) {
+            // log exception
+            return false;
+        }
+    }
+
+    public boolean isSuccessfullyLoggedOutMessageDisplayed() {
+        try {
+            return driver.findElement(successNotification).getText().contains("You logged out of the secure area!");
         } catch (ElementNotVisibleException e) {
             // log exception
             return false;
