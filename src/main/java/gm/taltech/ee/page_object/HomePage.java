@@ -18,8 +18,9 @@ public class HomePage {
         return driver.findElement(mainTitle).getText().equals("Welcome to the-internet");
     }
 
-    public void clickFormAuthenticationLink() {
+    public FormAuthenticationPage goToAuthenticationPage() {
         driver.findElement(formAuthenticationLink).click();
+        return new FormAuthenticationPage(driver);
     }
 
     public void clickDragAndDropLink() {

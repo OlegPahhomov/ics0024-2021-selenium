@@ -68,9 +68,9 @@ public class TheInternetAppTests {
 
     @Test
     public void should_login_to_secure_area_with_valid_credentials() {
-        FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
+        FormAuthenticationPage formAuthenticationPage = homePage.goToAuthenticationPage();
 
-        homePage.clickFormAuthenticationLink();
+        assertThat(formAuthenticationPage.isAt(), is(true));
         formAuthenticationPage.enterUsername("tomsmith");
         formAuthenticationPage.enterPassword("SuperSecretPassword!");
         formAuthenticationPage.clickSubmit();
@@ -82,7 +82,7 @@ public class TheInternetAppTests {
     public void should_not_login_with_invalid_login() {
         FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
 
-        homePage.clickFormAuthenticationLink();
+        homePage.goToAuthenticationPage();
         formAuthenticationPage.enterUsername("something");
         formAuthenticationPage.enterPassword("SuperSecretPassword!");
         formAuthenticationPage.clickSubmit();
@@ -94,7 +94,7 @@ public class TheInternetAppTests {
     public void should_not_login_with_invalid_password() {
         FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
 
-        homePage.clickFormAuthenticationLink();
+        homePage.goToAuthenticationPage();
         formAuthenticationPage.enterUsername("tomsmith");
         formAuthenticationPage.enterPassword("notcorrectpass");
         formAuthenticationPage.clickSubmit();
@@ -106,7 +106,7 @@ public class TheInternetAppTests {
     public void should_logout() {
         FormAuthenticationPage formAuthenticationPage = new FormAuthenticationPage(driver);
 
-        homePage.clickFormAuthenticationLink();
+        homePage.goToAuthenticationPage();
         formAuthenticationPage.enterUsername("tomsmith");
         formAuthenticationPage.enterPassword("SuperSecretPassword!");
         formAuthenticationPage.clickSubmit();

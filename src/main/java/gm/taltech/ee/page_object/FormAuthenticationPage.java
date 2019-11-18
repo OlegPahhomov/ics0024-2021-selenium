@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class FormAuthenticationPage {
 
+    private By mainTitle = By.tagName("h2");
     private By usernameField = By.id("username");
     private By passwordField = By.id("password");
     private By submitButton = By.xpath("//button[@type='submit']");
@@ -70,5 +71,9 @@ public class FormAuthenticationPage {
             // log exception
             return false;
         }
+    }
+
+    public boolean isAt() {
+        return driver.findElement(mainTitle).getText().equals("Login Page");
     }
 }
