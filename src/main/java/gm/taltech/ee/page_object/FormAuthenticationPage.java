@@ -20,6 +20,12 @@ public class FormAuthenticationPage {
         this.driver = driver;
     }
 
+    public void submitForm(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        clickSubmit();
+    }
+
     public void enterUsername(String username) {
         driver.findElement(usernameField).sendKeys(username);
     }
