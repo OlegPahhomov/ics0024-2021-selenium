@@ -14,6 +14,11 @@ public class HomePage {
         this.driver = driver;
     }
 
+    public HomePage open(){
+        driver.get("https://the-internet.herokuapp.com/");
+        return this;
+    }
+
     public boolean isAt() {
         return driver.findElement(mainTitle).getText().equals("Welcome to the-internet");
     }
