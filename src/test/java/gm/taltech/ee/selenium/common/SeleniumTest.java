@@ -23,7 +23,7 @@ public abstract class SeleniumTest {
 
     @BeforeMethod
     public void open_driver() {
-        driver.get("https://the-internet.herokuapp.com/");
+``        homePage.open();
     }
 
     @AfterClass

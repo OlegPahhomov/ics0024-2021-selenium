@@ -1,14 +1,7 @@
 package gm.taltech.ee.selenium;
 
 import gm.taltech.ee.page_object.FormAuthenticationPage;
-import gm.taltech.ee.page_object.HomePage;
 import gm.taltech.ee.selenium.common.SeleniumTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.is;
