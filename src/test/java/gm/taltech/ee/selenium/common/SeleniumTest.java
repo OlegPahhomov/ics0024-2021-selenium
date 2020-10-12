@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 public abstract class SeleniumTest {
 
-    private WebDriver driver;
+    protected WebDriver driver;
     protected HomePage homePage;
 
     @BeforeClass

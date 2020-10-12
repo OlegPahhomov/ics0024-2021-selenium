@@ -28,11 +28,13 @@ public class HomePage {
         return new FormAuthenticationPage(driver);
     }
 
-    public void clickDragAndDropLink() {
+    public DragAndDropPage clickDragAndDropLink() {
         driver.findElement(dragAndDropLink).click();
+        return new DragAndDropPage(driver);
     }
 
-    public void clickMultipleWindowsLink() {
+    public MultipleWindows clickMultipleWindowsLink() {
         driver.findElement(multipleWindowsLink).click();
+        return new MultipleWindows(driver);
     }
 }
