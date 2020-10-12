@@ -23,7 +23,7 @@ public abstract class SeleniumTest {
 
     @BeforeMethod
     public void open_driver() {
-``        homePage.open();
+        homePage.open();
     }
 
     @AfterClass
