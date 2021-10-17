@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 
-public class FormAuthenticationPage {
+public class FormAuthenticationPage extends Page {
 
     private final By mainTitle = By.tagName("h2");
     private final By usernameField = By.id("username");
@@ -14,10 +14,8 @@ public class FormAuthenticationPage {
     private final By successNotification = By.cssSelector(".flash.success");
     private final By errorNotification = By.cssSelector(".flash.error");
 
-    private WebDriver driver;
-
     public FormAuthenticationPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void submitForm(String username, String password) {

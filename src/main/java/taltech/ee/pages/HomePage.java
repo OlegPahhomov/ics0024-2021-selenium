@@ -3,18 +3,17 @@ package taltech.ee.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
+public class HomePage extends Page {
     private final By mainTitle = By.tagName("h1");
     private final By formAuthenticationLink = By.linkText("Form Authentication");
 
-    private WebDriver driver;
-
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    public void goToAuthenticationPage() {
+    public FormAuthenticationPage goToAuthenticationPage() {
         driver.findElement(formAuthenticationLink).click();
+        return new FormAuthenticationPage(driver);
     }
 
     public void open() {
