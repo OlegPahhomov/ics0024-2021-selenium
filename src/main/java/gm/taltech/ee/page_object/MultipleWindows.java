@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 
 public class MultipleWindows {
-    private By buttonClickHere = By.linkText("Click Here");
-    private By newWindowHeading = By.tagName("h3");
+    private final By buttonClickHere = By.linkText("Click Here");
+    private final By newWindowHeading = By.tagName("h3");
 
     private WebDriver driver;
 

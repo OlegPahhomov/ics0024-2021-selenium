@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage {
-    private WebDriver driver;
-    private By mainTitle = By.tagName("h1");
-    private By formAuthenticationLink = By.linkText("Form Authentication");
-    private By dragAndDropLink = By.linkText("Drag and Drop");
-    private By multipleWindowsLink = By.linkText("Multiple Windows");
+    private final WebDriver driver;
+    private final By mainTitle = By.tagName("h1");
+    private final By formAuthenticationLink = By.linkText("Form Authentication");
+    private final By dragAndDropLink = By.linkText("Drag and Drop");
+    private final By multipleWindowsLink = By.linkText("Multiple Windows");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;

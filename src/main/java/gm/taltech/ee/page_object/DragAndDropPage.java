@@ -15,10 +15,10 @@ import static java.util.Objects.requireNonNull;
 
 public class DragAndDropPage {
 
-    private WebDriver driver;
-    private By blockA = By.id("column-a");
-    private By blockB = By.id("column-b");
-    private By heading = By.className("example");
+    private final WebDriver driver;
+    private final By blockA = By.id("column-a");
+    private final By blockB = By.id("column-b");
+    private final By heading = By.className("example");
 
 
     public DragAndDropPage(WebDriver driver) {

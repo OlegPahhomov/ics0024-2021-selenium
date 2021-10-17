@@ -6,13 +6,13 @@ import org.openqa.selenium.WebDriver;
 
 public class FormAuthenticationPage {
 
-    private By mainTitle = By.tagName("h2");
-    private By usernameField = By.id("username");
-    private By passwordField = By.id("password");
-    private By submitButton = By.xpath("//button[@type='submit']");
-    private By logoutButton = By.linkText("Logout");
-    private By successNotification = By.cssSelector(".flash.success");
-    private By errorNotification = By.cssSelector(".flash.error");
+    private final By mainTitle = By.tagName("h2");
+    private final By usernameField = By.id("username");
+    private final By passwordField = By.id("password");
+    private final By submitButton = By.xpath("//button[@type='submit']");
+    private final By logoutButton = By.linkText("Logout");
+    private final By successNotification = By.cssSelector(".flash.success");
+    private final By errorNotification = By.cssSelector(".flash.error");
 
     private WebDriver driver;
 
