@@ -1,4 +1,4 @@
-package gm.taltech.ee.page_object;
+package gm.taltech.ee.misc;
 
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.By;

@@ -1,4 +1,4 @@
-package gm.taltech.ee.page_object;
+package gm.taltech.ee.misc;
 
 import org.openqa.selenium.WebDriver;
 
