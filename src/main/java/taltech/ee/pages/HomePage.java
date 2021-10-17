@@ -13,11 +13,6 @@ public class HomePage extends Page {
         super(driver);
     }
 
-    public FormAuthenticationPage goToAuthenticationPage() {
-        driver.findElement(formAuthenticationLink).click();
-        return new FormAuthenticationPage(driver);
-    }
-
     public void open() {
         driver.get("https://the-internet.herokuapp.com/");
     }
@@ -26,12 +21,17 @@ public class HomePage extends Page {
         return driver.findElement(mainTitle).getText().equals("Welcome to the-internet");
     }
 
-    public DragAndDropPage clickDragAndDropLink() {
+    public FormAuthenticationPage goToAuthenticationPage() {
+        driver.findElement(formAuthenticationLink).click();
+        return new FormAuthenticationPage(driver);
+    }
+
+    public DragAndDropPage gotToDragAndDropPage() {
         driver.findElement(dragAndDropLink).click();
         return new DragAndDropPage(driver);
     }
 
-    public MultipleWindows clickMultipleWindowsLink() {
+    public MultipleWindows goToMultipleWindowsLink() {
         driver.findElement(multipleWindowsLink).click();
         return new MultipleWindows(driver);
     }
