@@ -32,9 +32,6 @@ public class Selenium1 {
 
     @Test
     public void can_go_to_home_page(){
-        // go to home page
-        driver.get("https://the-internet.herokuapp.com/");
-
         // should see title 'Welcome to the-internet'
         String title = driver.findElement(By.tagName("h1")).getText();
 
