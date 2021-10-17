@@ -2,6 +2,7 @@ package gm.taltech.ee.selenium;
 
 import gm.taltech.ee.selenium.common.SeleniumTest;
 import org.testng.annotations.Test;
+import taltech.ee.pages.DragAndDropPage;
 import taltech.ee.pages.FormAuthenticationPage;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -41,10 +42,20 @@ public class SeleniumYou extends SeleniumTest {
 
     @Test
     public void should_change_location_of_blocks_after_drag_and_drop_to_BA() {
+        DragAndDropPage dragAndDropPage = homePage.clickDragAndDropLink();
+
+        dragAndDropPage.dragAonTopOfB();
+
+        assertThat(dragAndDropPage.isTheFirstElementsHeaderText("B"), is(true));
     }
 
     @Test
     public void should_not_change_location_of_blocks_after_drag_and_drop_to_not_B() {
+        DragAndDropPage dragAndDropPage = homePage.clickDragAndDropLink();
+
+        dragAndDropPage.dragAonTopOfHeading();
+
+        assertThat(dragAndDropPage.isTheFirstElementsHeaderText("A"), is(true));
     }
 
     @Test
