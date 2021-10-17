@@ -13,3 +13,6 @@ Web Application under test: https://the-internet.herokuapp.com/
 - Dynamic Loading (Waits)
 - Hovers (Content appears on hover)
 - Entry Ad (Dealing with modals)
+
+
+Originally forked from https://gitlab.cs.ttu.ee/german.mumma
