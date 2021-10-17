@@ -13,16 +13,14 @@ import static java.lang.Thread.currentThread;
 import static java.nio.charset.Charset.defaultCharset;
 import static java.util.Objects.requireNonNull;
 
-public class DragAndDropPage {
+public class DragAndDropPage extends Page {
 
-    private final WebDriver driver;
     private final By blockA = By.id("column-a");
     private final By blockB = By.id("column-b");
     private final By heading = By.className("example");
 
-
     public DragAndDropPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void dragAonTopOfHeading() {

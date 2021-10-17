@@ -5,14 +5,12 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 
 
-public class MultipleWindows {
+public class MultipleWindows extends Page {
     private final By buttonClickHere = By.linkText("Click Here");
     private final By newWindowHeading = By.tagName("h3");
 
-    private WebDriver driver;
-
     public MultipleWindows(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void clickClickHereButton() {
