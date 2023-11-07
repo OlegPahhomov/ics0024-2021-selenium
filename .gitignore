@@ -1,6 +1,8 @@
 # IDEA Specific
 .idea/
-ui-automation-selenium.iml
+.gradle
+build
+ics0024-2021-selenium.iml
 
 # Project specific
 target
