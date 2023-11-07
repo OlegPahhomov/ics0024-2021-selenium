@@ -1,7 +1,7 @@
 package gm.taltech.ee.misc;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 
 
@@ -21,7 +21,7 @@ public class MultipleWindows extends Page {
         try {
             driver.findElement(newWindowHeading);
             return true;
-        } catch (ElementNotVisibleException e) {
+        } catch (ElementNotInteractableException e) {
             return false;
         }
     }

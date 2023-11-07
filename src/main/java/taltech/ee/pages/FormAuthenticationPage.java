@@ -1,7 +1,7 @@
 package taltech.ee.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 
 public class FormAuthenticationPage extends Page {
@@ -44,7 +44,7 @@ public class FormAuthenticationPage extends Page {
         try {
             driver.findElement(successNotification);
             return true;
-        } catch (ElementNotVisibleException e) {
+        } catch (ElementNotInteractableException e) {
             // log exception
             return false;
         }
@@ -53,7 +53,7 @@ public class FormAuthenticationPage extends Page {
     public boolean isUsernameInvalidMessageDisplayed() {
         try {
             return driver.findElement(errorNotification).getText().contains("Your username is invalid!");
-        } catch (ElementNotVisibleException e) {
+        } catch (ElementNotInteractableException e) {
             // log exception
             return false;
         }
@@ -62,7 +62,7 @@ public class FormAuthenticationPage extends Page {
     public boolean isPasswordInvalidMessageDisplayed() {
         try {
             return driver.findElement(errorNotification).getText().contains("Your password is invalid!");
-        } catch (ElementNotVisibleException e) {
+        } catch (ElementNotInteractableException e) {
             // log exception
             return false;
         }
@@ -71,7 +71,7 @@ public class FormAuthenticationPage extends Page {
     public boolean isSuccessfullyLoggedOutMessageDisplayed() {
         try {
             return driver.findElement(successNotification).getText().contains("You logged out of the secure area!");
-        } catch (ElementNotVisibleException e) {
+        } catch (ElementNotInteractableException e) {
             // log exception
             return false;
         }

@@ -1,7 +1,7 @@
 package taltech.ee.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class MultipleWindows extends Page {
             driver.close();
             driver.switchTo().window(browserTabs.get(0));
             return newWindow;
-        } catch (ElementNotVisibleException e) {
+        } catch (ElementNotInteractableException e) {
             return false;
         }
     }
